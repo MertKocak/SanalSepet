@@ -21,9 +21,9 @@
 | **Zustand**   | Global state management için hafif bir çözüm |
 
 
-🧠 Geliştirici Notları
+## 🧠 Geliştirici Notları
 Bu proje, hem frontend hem de backend becerilerimi geliştirmek amacıyla başlatılmıştır. Özellikle Zustand ile state yönetimi, Strapi ile API mimarisi kurma konularında kendimi geliştirmeyi hedefledim.
 
-📧 İletişim
+## 📧 İletişim
 Her türlü geri bildirim veya iş birliği için:
 mertkocak.2811@gmail.com
