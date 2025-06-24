@@ -56,7 +56,7 @@ const SearchPage = () => {
       size: searchParams.get('size') ?? undefined,
       page: parseInt(searchParams.get('page') ?? '1'),
     });
-  }, [searchParams]);
+  }, [searchParams.toString()]);
 
 
   const fetchColorsSizesCategories = async () => {
@@ -120,22 +120,38 @@ const SearchPage = () => {
 
   const updateURL = (key: string, value: string) => {
     const newParams = new URLSearchParams(searchParams);
+
     if (value && value !== 'all') {
-      newParams.set(key, value)
-    }
-    else {
+      newParams.set(key, value);
+    } else {
       newParams.delete(key);
     }
+
     if (key !== 'page') {
-      newParams.set('page', "1")
+      const currentPage = searchParams.get('page');
+      if (currentPage !== '1') {
+        newParams.set('page', '1');
+      }
     }
-    router.push(`/search?${newParams.toString()}`)
-  }
+
+    const newQuery = newParams.toString();
+    const currentQuery = searchParams.toString();
+
+    if (newQuery !== currentQuery) {
+      router.push(`/search?${newQuery}`);
+    }
+  };
+
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      updateURL("q", search)
+      const currentQuery = searchParams.get('q') || '';
+      if (search !== currentQuery) {
+        updateURL("q", search)
+      }
     }, 1000)
+
+    return () => clearTimeout(delayDebounceFn);
   }, [search])
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -33,7 +33,7 @@ const Card = ({ jwt, userId }: CardProps) => {
     const deleteCardItem = async (id: any) => {
         await deleteCart(id, jwt);
         fetchItems(userId, jwt);
-        toast('Ürün sepetinizden kaldırıldı!', { icon: <Trash2Icon className='w-5 h-5  text-orange-500' />,})
+        toast('Ürün sepetinizden kaldırıldı!', { icon: <Trash2Icon style={{ color: "#ff6700" }} className='w-5 h-5' />, })
     }
 
     useEffect(() => {
@@ -62,7 +62,7 @@ const Card = ({ jwt, userId }: CardProps) => {
                 <SheetHeader>
                     <SheetTitle style={{ color: "#ff6700" }} className='font-bold text-lg'>Sepetim</SheetTitle>
                 </SheetHeader>
-                <div className='overflow-y-auto max-h-[60vh]'>
+                <div className='overflow-y-auto max-h-[56vh]'>
                     {items.length === 0 ? <p className='px-4 text-md text-gray-700'>Sepetiniz boş!</p>
                         :
                         <div className='px-4 -mt-2 text-gray-700'>
@@ -88,11 +88,13 @@ const Card = ({ jwt, userId }: CardProps) => {
                                     <p className='font-normal text-sm text-gray-700 text-right'>50₺</p>
                                 </div>
                                 <div className='flex flex-row w-[317px] justify-between'>
-                                    <p className='font-semibold text-lg mt-2 mb-2 text-gray-700'>Toplam</p>
-                                    <p className='font-semibold text-lg mt-2 mb-2 text-gray-700'>{subTotal + 50}₺</p>
+                                    <p className='font-normal text-sm text-gray-700'>250₺ ve Üzeri Kargo Bedava!</p>
+                                    <p className='font-normal text-sm text-orange-500 text-right'>-50₺</p>
                                 </div>
-
-
+                                <div className='flex flex-row w-[317px] justify-between'>
+                                    <p className='font-semibold text-lg mt-2 mb-2 text-gray-700'>Toplam</p>
+                                    <p className='font-semibold text-lg mt-2 mb-2 text-gray-700'>{subTotal}₺</p>
+                                </div>
                             </div>
                             : null}
                         <div className='w-full'>
