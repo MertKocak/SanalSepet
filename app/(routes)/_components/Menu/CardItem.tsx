@@ -25,7 +25,7 @@ const CardItem = ({ item, deleteCardItem }: CardItemProps) => {
                 <div className='flex flex-col ml-2'>
                     <p className='text-md text-gray-700 font-semibold mb-1'>{item.name}</p>
                     <p className='text-xs text-gray-700'>Ürün adedi: {item.quantity}</p>
-                    <p className='text-xs text-gray-700'>{item.color ? "Renk: " + item.color + " - " : null} {item.size ? "Beden: " + item.size : null}</p>
+                    <p className='text-xs text-gray-700'>{item.color ? "Renk: " + item.color + "   " : null} {item.size ? "Beden: " + item.size : null}</p>
                     <p style={{ color: "#ff6700" }} className='text-lg font-bold mt-1'>{item.totalPrice}₺</p>
                 </div>
             </div>

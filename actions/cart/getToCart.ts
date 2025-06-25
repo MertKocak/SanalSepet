@@ -20,8 +20,9 @@ export const getToCart = async (userId: unknown, jwt: unknown) => {
                 id: item.documentId,
                 color: item.color,
                 size: item.size,
-                product: item.products[0].id,
+                products: item.products[0].id,
                 images: item.products[0].images[0].url,
+                productsdocID: item.products[0].documentId,
             }
         ))
         return cartItemList

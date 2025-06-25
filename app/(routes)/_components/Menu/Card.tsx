@@ -62,7 +62,7 @@ const Card = ({ jwt, userId }: CardProps) => {
                 <SheetHeader>
                     <SheetTitle style={{ color: "#ff6700" }} className='font-bold text-lg'>Sepetim</SheetTitle>
                 </SheetHeader>
-                <div className='overflow-y-auto max-h-[56vh]'>
+                <div className='overflow-y-auto max-h-[58vh]'>
                     {items.length === 0 ? <p className='px-4 text-md text-gray-700'>Sepetiniz boş!</p>
                         :
                         <div className='px-4 -mt-2 text-gray-700'>

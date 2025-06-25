@@ -7,7 +7,11 @@ type CartItem = {
   name: string;
   quantity: number;
   price: number;
-  product: unknown;
+  products: unknown;
+  productsdocID: string;
+  color: string,
+  size: string,
+  userId: number,
 }
 
 type CartState = {

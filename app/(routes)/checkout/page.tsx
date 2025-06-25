@@ -58,7 +58,7 @@ const ChechoutPage = () => {
         <div className='px-16 xl:px-40 my-8'>
             <div className='grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-3 gap-4'>
                 <div className='col-span-1 md:col-span-2 xl:col-span-2 border rounded-2xl py-1.5 px-3 h-fit' >
-                    <CheckoutForm subtotal={subTotal} />
+                    <CheckoutForm subtotal={subTotal} userId={userId} jwt={jwt} />
                 </div>
                 <div className='col-span-1 md:col-span-2 xl:col-span-1 border justify-center items-center rounded-2xl h-fit px-2'>
                     <div className='px-4 bottom-0 flex flex-col w-full rounded-2xl border py-4 mt-2 items-start'>

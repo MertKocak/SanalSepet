@@ -43,7 +43,7 @@ const RecentProducts = () => {
                     }
                     plugins={[
                         Autoplay({
-                            delay: 3000,
+                            delay: 4000,
                         }),
                     ]}
                 >

@@ -50,8 +50,9 @@ const UserMenu = () => {
                     <DropdownMenuContent className='text-gray-800'>
                         <DropdownMenuLabel>Hesabım</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Profilim</DropdownMenuItem>
-                        <DropdownMenuItem>Siparişlerim</DropdownMenuItem>
+                        <Link href={'/my-orders'}>
+                            <DropdownMenuItem >Siparişlerim</DropdownMenuItem>
+                        </Link>
                         <DropdownMenuItem onClick={signOut}>Çıkış</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

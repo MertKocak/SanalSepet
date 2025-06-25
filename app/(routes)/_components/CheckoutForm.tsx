@@ -23,9 +23,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { createOrder } from '@/actions/cart/createOrder';
 
 interface ChechoutPageProps {
-    subtotal: number
+    subtotal: number,
+    userId: string,
+    jwt: any,
 }
 
 export const formSchema = z.object({
@@ -68,7 +71,7 @@ export const formSchema = z.object({
         .regex(/^[0-9]+$/, { message: "CVC sadece rakamlardan oluşmalıdır." }),
 });
 
-const CheckoutForm = ({ subtotal }: ChechoutPageProps) => {
+const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
     const [response, setResponse] = useState(null);
     const { items, fetchItems } = useCartStore();
     const router = useRouter();
@@ -163,31 +166,39 @@ const CheckoutForm = ({ subtotal }: ChechoutPageProps) => {
 
             if (response.data.status === "success") {
 
-                /* const payload = {
+                const cleanedItems = items.map(item => ({
+                    product: item.productsdocID,
+                    quantity: item.quantity,
+                    totalPrice: item.totalPrice,
+                    color: item.color,
+                    size: item.size,
+                }));
+
+                const payload = {
                     data: {
-                        name: data.name,
-                        address: data.address,
-                        phone: data.phone,
+                        name: data.isim,
+                        address: data.adres,
+                        phone: data.telefon,
                         userId: userId,
                         subtotal: subtotal,
                         paymentText: "Iyzico",
-                        OrderItemList: items,
+                        OrderedProducts: cleanedItems
                     }
                 }
 
-              await createOrder(payload, jwt)
+                await createOrder(payload, jwt)
 
                 items.forEach((item, index) => {
                     deleteCart(item.id, jwt).then(resp => {
 
                     })
-                }) */
+                })
 
-                toast.success("Ödeme başarılı bir şekilde tamamlandı! 🧡");
+                toast.success("Ödeme başarılı bir şekilde tamamlandı!");
 
-                /* fetchItems(userId, jwt)
+                fetchItems(userId, jwt)
 
-                router.push("/my-order") */
+                router.push("/my-orders")
             }
             else {
                 toast.error("Ödeme tamamlanamadı!")

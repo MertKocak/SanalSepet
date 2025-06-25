@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 
-export const deleteCart = async (id: number, jwt: string | null) => {
+export const deleteCart = async (id: string, jwt: string | null) => {
 
-  console.log("gelen id: " + id)
+  console.log("gelen id:" + id)
 
   if (!jwt) {
     console.error("JWT token yok!");
