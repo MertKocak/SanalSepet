@@ -3,11 +3,41 @@
 
 import useCartStore from '@/hooks/useCartStore';
 import React, { useEffect, useState } from 'react'
+import {
+    Collapsible,
+    CollapsibleContent,
+    CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import { useRouter } from 'next/navigation';
+import { getToOrder } from '@/actions/cart/getToOrder';
+import moment from 'moment';
+import { CheckIcon, ChevronDown } from 'lucide-react';
+import OrderItem from '../_components/OrderItem';
+
+type OrderItem = {
+    name: string,
+    address: string,
+    phone: string,
+    userId: number,
+    subtotal: number,
+    paymentText: string,
+    createdAt: string,
+    OrderedProducts: {
+        product: string,
+        quantity: number,
+        totalPrice: number,
+        color: string,
+        size: string,
+    }[];
+};
 
 const MyOrdersPage = () => {
 
     const { items, fetchItems } = useCartStore();
     const [fetchTrigger, setFetchrigger] = useState(false)
+    const [orderList, setOrderList] = useState<OrderItem[]>([])
+
+    const router = useRouter();
 
     let jwt: string | null = "";
     let user: string | null = "";
@@ -24,12 +54,69 @@ const MyOrdersPage = () => {
         console.log(error)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchItems(userId, jwt);
-    },[userId, jwt, fetchItems, fetchTrigger])
+    }, [userId, jwt, fetchItems, fetchTrigger]);
+
+    const getOrder = async () => {
+        const orderList_ = await getToOrder(userId, jwt);
+        setOrderList(orderList_)
+    }
+
+    useEffect(() => {
+        if (!jwt) {
+            router.push("/");
+        }
+        getOrder()
+
+    }, [])
 
     return (
-        <div>MyOrdersPage</div>
+        <div className='px-4 md:px-20 xl:px-48 my-6'>
+            <p style={{ color: "#ff6700" }} className='text-lg font-semibold'>
+                <span>Siparişlerim</span>
+                <hr className='mt-2 mb-4' />
+            </p>
+            <div className=''>
+                {orderList.map((item, index) => (
+                    <Collapsible key={index}>
+                        <CollapsibleTrigger className='flex w-full mt-4 items-center border py-2 px-4 content-center justify-between rounded-sm gap-4 md:gap-8'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 w-full'>
+                                <p className='text-gray-700 text-xs lg:text-sm w-full text-start'>
+                                    <span className='font-semibold text-xs lg:text-sm'>Sipariş Tarihi:</span> {moment(item?.createdAt).format('DD/MMM/yyyy')}
+                                </p>
+                                <p className='text-gray-700 text-xs lg:text-sm w-full text-start'>
+                                    <span className='font-semibold text-xs lg:text-sm'>Ödeme Yöntemi:</span> {item?.paymentText}
+                                </p>
+                                <div className='flex flex-row items-start w-full'>
+                                    <p className='font-semibold text-xs text-gray-700 lg:text-sm mr-2'>
+                                        Sipariş Durumu:
+                                    </p>
+                                    <div className='flex flex-row items-center'>
+                                        <CheckIcon className='text-green-600 h-4 w-4 mr-0.5' />
+                                        <p className='text-green-600 text-xs lg:text-sm'>Teslim Edildi</p>
+                                    </div>
+                                </div>
+                                <p className='text-gray-700 text-xs lg:text-sm w-full text-start'>
+                                    <span className='font-semibold text-xs lg:text-sm'>Toplam Tutar:</span> {item?.subtotal}₺
+                                </p>
+                            </div>
+
+                            <p className='col-span-2 '> <span className='font-bold'> <ChevronDown className='ml-auto text-gray-700' /> </span></p>
+
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                            {item.OrderedProducts && item.OrderedProducts.map((order, index_) => (
+                                <OrderItem key={index_} orderItem={order} />
+                            ))}
+                        </CollapsibleContent>
+                    </Collapsible>
+
+                ))}
+
+
+            </div>
+        </div>
     )
 }
 

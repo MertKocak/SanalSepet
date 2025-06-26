@@ -70,7 +70,7 @@ const ChechoutPage = () => {
                                     <p className='font-normal text-sm text-gray-700'>Ürün Toplamı</p>
                                     <p className='font-normal text-sm text-gray-700'>{subTotal}₺</p>
                                 </div>
-
+ 
                                 <div className='flex flex-row justify-between w-full mb-1'>
                                     <p className='font-normal text-sm text-gray-700'>Kargo Ücreti</p>
                                     <p className='font-normal text-sm text-gray-700'>50₺</p>

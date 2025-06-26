@@ -215,7 +215,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
         <div className='p-4'>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                    <p style={{ color: "#ff6700" }} className='mb-1 text-xl font-semibold'>
+                    <p style={{ color: "#ff6700" }} className='mb-1 text-lg font-semibold'>
                         Kişisel Bilgiler
                         <hr className='mt-2 mb-6' />
                     </p>
@@ -264,7 +264,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
                         )}
                     />
 
-                    <p style={{ color: "#ff6700" }} className='mb-1 text-xl font-semibold'>
+                    <p style={{ color: "#ff6700" }} className='mb-1 text-lg font-semibold'>
                         Kart Bilgileri
                         <hr className='mt-2 mb-6' />
                     </p>
