@@ -40,6 +40,7 @@ const ProductModalImages = ({ images }: ProductModalImagesProps) => {
                             alt='alt'
                             height={200}
                             unoptimized={true}
+                            priority
                             src={
                                 process.env.NEXT_PUBLIC_BACKEND_URL + image.url}
                             className='rounded-lg h-auto sm:h-[386px] w-auto object-contain' />

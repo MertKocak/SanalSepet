@@ -10,7 +10,7 @@ const RoutesLayout = ({ children }: RoutesLayoutProps) => {
     return (
         <div style={{backgroundColor: "#fffeff"}}>
             <Navbar />
-            <div className='min-h-screen'>
+            <div className='min-h-screen lg:pt-0 pt-24'>
                 {children}
             </div>
             <Footer />

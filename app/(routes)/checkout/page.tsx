@@ -11,12 +11,14 @@ import toast from 'react-hot-toast';
 import CheckoutCardItem from '../_components/Menu/CheckoutCardItem';
 import { Button } from '@/components/ui/button';
 import CheckoutForm from '../_components/CheckoutForm';
+import CheckoutCardSkeleton from '../_components/Skeleton/CheckoutCardSkeleton';
 
 const ChechoutPage = () => {
 
     const { items, fetchItems } = useCartStore();
     const [subTotal, setSubTotal] = useState(0);
     const router = useRouter();
+    const [loading, setLoading] = useState(true)
 
     let jwt: string | null = "";
     let user: string | null = "";
@@ -38,6 +40,10 @@ const ChechoutPage = () => {
         if (userId && jwt) {
             fetchItems(userId, jwt);
         }
+        if (items.length === 0) {
+            router.push("/")
+        }
+        setLoading(false)
     }, [userId, jwt, fetchItems]);
 
     useEffect(() => {
@@ -70,7 +76,7 @@ const ChechoutPage = () => {
                                     <p className='font-normal text-sm text-gray-700'>Ürün Toplamı</p>
                                     <p className='font-normal text-sm text-gray-700'>{subTotal}₺</p>
                                 </div>
- 
+
                                 <div className='flex flex-row justify-between w-full mb-1'>
                                     <p className='font-normal text-sm text-gray-700'>Kargo Ücreti</p>
                                     <p className='font-normal text-sm text-gray-700'>50₺</p>
@@ -87,13 +93,11 @@ const ChechoutPage = () => {
                             </div>
                         ) : null}
                     </div>
-                    {
+                    {loading ? <CheckoutCardSkeleton /> :
                         items.map((item) => (
                             <CheckoutCardItem key={item.id} item={item} deleteCardItem={() => deleteCardItem(item.id)} />
                         ))
                     }
-
-
                 </div>
             </div>
         </div>

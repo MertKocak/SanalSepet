@@ -52,7 +52,7 @@ const Navbar = () => {
 
     return (
         <>
-            <header className='flex py-4 border-b text-gray-800'>
+            <header style={{ backgroundColor: "#fffeff" }} className='fixed top-0 left-0 w-full z-50 flex py-4 border-b text-gray-700 shadow-xs'>
                 <div className='flex items-center container justify-between mx-auto px-20 xl:px-40'>
                     <Logo />
                     <Search />
@@ -65,7 +65,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </header>
-            <nav className='hidden lg:flex border-b py-1 text-gray-700 text-sm justify-center font-medium'>
+            <nav className='hidden pt-[76px] lg:flex border-b py-1 text-gray-700 text-sm justify-center font-medium'>
                 <div className='hidden lg:flex gap-8'>
                     {loading ? (
                         <div className='py-1'>

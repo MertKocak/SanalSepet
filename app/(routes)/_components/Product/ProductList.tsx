@@ -4,10 +4,12 @@ import { getProducts } from '@/actions/getProducts';
 import { Product } from '@/constans/type';
 import React, { useState, useEffect } from 'react'
 import ProductItem from './ProductItem';
+import ProductSkeleton from '../Skeleton/ProductSkeleton';
 
 const ProductList = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -19,22 +21,25 @@ const ProductList = () => {
                 console.log("Ürünler yüklenirken hata oluştu.", error)
             }
         }
-        
+
         fetchProducts();
+        setLoading(false)
     }, [])
 
     return (
         <>
             <p className='font-semibold text-lg text-gray-700 mt-12 px-20 xl:px-40'>İndirimde Olan Ürünler</p>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 mb-12 px-20 xl:px-40'>
-                {products.map((product, index) => (
-                    <ProductItem
-                        key={index}
-                        product={product}
-                    />
-                ))
-                }
-            </div>
+            {loading ? <ProductSkeleton />
+                :
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 mb-12 px-20 xl:px-40'>
+                    {products.map((product, index) => (
+                        <ProductItem
+                            key={index}
+                            product={product}
+                        />
+                    ))
+                    }
+                </div>}
         </>
     )
 }

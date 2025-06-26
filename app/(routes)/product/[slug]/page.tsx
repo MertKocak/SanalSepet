@@ -4,6 +4,7 @@ import { getProducts } from '@/actions/getProducts';
 import { Product } from '@/constans/type';
 import React, { useEffect, useState } from 'react'
 import ProductDetail from '../../_components/Product/ProductDetail';
+import ProductDetailSkeleton from '../../_components/Skeleton/ProductDetailSkeleton';
 
 interface ProductDetailPageProps {
   params: {
@@ -34,9 +35,7 @@ const ProductDetailPage = ({ params }: ProductDetailPageProps) => {
   return (
     <>
       {loading ?
-        <div>
-
-        </div>
+        <ProductDetailSkeleton />
         :
         <div className='px-20 xl:px-48'>
           {productDetail.map((product, index) => (

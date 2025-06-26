@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const getToOrder = async (userId: unknown, jwt: unknown) => {
-    const Url = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/orders?filters[userId][$eq]=${userId}&populate[OrderedProducts][populate][product][populate]=images`;
+    const Url = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/orders?filters[userId][$eq]=${userId}&populate[OrderedProducts][populate][product][populate]=images&sort[0]=createdAt:desc`;
 
     try {
         const response = await axios.get(Url, {

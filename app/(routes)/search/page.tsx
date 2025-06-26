@@ -23,6 +23,7 @@ import ProductItem from "../_components/Product/ProductItem";
 import { Category, Color, Size } from "@/constans/type";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
+import SearchSkeleton from "../_components/Skeleton/SearchSkeleton";
 
 const SearchPage = () => {
 
@@ -241,9 +242,7 @@ const SearchPage = () => {
       <div>
         {loading ?
           (
-            <div>
-
-            </div>
+            <SearchSkeleton />
           )
           :
           (

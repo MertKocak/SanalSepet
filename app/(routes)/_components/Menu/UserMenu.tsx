@@ -51,9 +51,9 @@ const UserMenu = () => {
                         <DropdownMenuLabel>Hesabım</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <Link href={'/my-orders'}>
-                            <DropdownMenuItem >Siparişlerim</DropdownMenuItem>
+                            <DropdownMenuItem className='cursor-pointer'>Siparişlerim</DropdownMenuItem>
                         </Link>
-                        <DropdownMenuItem onClick={signOut}>Çıkış</DropdownMenuItem>
+                        <DropdownMenuItem className='cursor-pointer' onClick={signOut}>Çıkış</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             ) : (

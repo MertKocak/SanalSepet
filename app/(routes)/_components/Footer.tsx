@@ -83,7 +83,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <div className='border-t py-4 text-center flex flex-col px-20 xl:px-40 text-gray-700 font-medium text-sm'>Developed by Mert Koçak</div>
+            <Link href={"https://www.mertkocak.online/"} className='border-t py-4 text-center flex flex-col px-20 xl:px-40 text-gray-700 font-medium text-sm'>Developed by Mert Koçak</Link>
         </>
     )
 }

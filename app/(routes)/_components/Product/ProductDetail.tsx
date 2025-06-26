@@ -1,18 +1,19 @@
+'use client'
+
 import { Product } from '@/constans/type';
-import React from 'react'
 import ProductModalImages from './ProductModalImages';
 import ProductDetailForm from './ProductDetailForm';
 import RecentProducts from './RecentProducts';
-
 
 interface ProductDetailProps {
     product: Product;
 }
 
 const ProductDetail = ({ product }: ProductDetailProps) => {
+
     return (
         <>
-            <div className='w-full flex lg:flex-row flex-col  pt-4 md:pt-8 md:pb-12 pb-24'>
+    <div className='w-full flex lg:flex-row flex-col  pt-4 md:pt-8 md:pb-12 pb-24'>
                 <div>
                     <ProductModalImages images={product.images} />
                 </div>
@@ -39,6 +40,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                     <ProductDetailForm product={product} />
                 </div>
             </div>
+
             <RecentProducts />
         </>
     )

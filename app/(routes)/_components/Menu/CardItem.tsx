@@ -18,6 +18,7 @@ const CardItem = ({ item, deleteCardItem }: CardItemProps) => {
                         alt='alt'
                         height={80}
                         unoptimized={true}
+                        priority
                         src={
                             process.env.NEXT_PUBLIC_BACKEND_URL + item.images}
                         className='rounded-xl object-contain h-24 w-24' />

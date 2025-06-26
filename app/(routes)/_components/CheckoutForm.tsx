@@ -24,6 +24,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { createOrder } from '@/actions/cart/createOrder';
+import { LoaderCircle } from 'lucide-react';
 
 interface ChechoutPageProps {
     subtotal: number,
@@ -75,6 +76,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
     const [response, setResponse] = useState(null);
     const { items, fetchItems } = useCartStore();
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -162,7 +164,6 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
             });
 
             setResponse(response.data);
-            console.log(response.data);
 
             if (response.data.status === "success") {
 
@@ -190,9 +191,10 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
 
                 items.forEach((item, index) => {
                     deleteCart(item.id, jwt).then(resp => {
-
                     })
                 })
+
+                setLoading(true);
 
                 toast.success("Ödeme başarılı bir şekilde tamamlandı!");
 
@@ -385,7 +387,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
                     </div>
 
                     <Button style={{ backgroundColor: "#ff6700" }} type="submit" className="w-full cursor-pointer">
-                        Ödemeyi Tamamla
+                        {loading ? <LoaderCircle className='animate-spin' /> : "Ödemeyi Tamamla"}
                     </Button>
 
                 </form>

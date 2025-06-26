@@ -7,10 +7,9 @@ interface MyOrderItemProps {
 }
 
 const MyorderItem = ({ orderItem }: MyOrderItemProps) => {
-    console.log("gelen url: " + process.env.NEXT_PUBLIC_BACKEND_URL + orderItem.product.images[0].url)
     return (
         <div style={{ backgroundColor: "#f9f9f9" }} className='rounded-sm -mt-2'>
-            <div className='mt-2 flex flex-row items-center gap-4 border-b rounded-sm py-2 lg:px-8 px-2 justify-center lg:justify-between'>
+            <div className='mt-2 flex flex-row items-center gap-4 border-b py-2 lg:px-8 px-2 justify-center lg:justify-between'>
                 <div className='flex flex-row w-full gap-2'>
                     <div className='items-center  justify-start'>
                         <Image

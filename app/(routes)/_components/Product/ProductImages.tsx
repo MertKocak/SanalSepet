@@ -37,6 +37,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
                             alt='alt'
                             height={200}
                             unoptimized={true}
+                            priority
                             src={
                                 process.env.NEXT_PUBLIC_BACKEND_URL + image.url}
                             className='rounded-lg h-[200px] object-contain scale-95 w-full group-hover:scale-100 transition-all duration-700' />
