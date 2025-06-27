@@ -41,29 +41,39 @@ const MyOrdersPage = () => {
 
     const router = useRouter();
 
-    let jwt: string | null = "";
-    let user: string | null = "";
-    let userId = "";
+    const [jwt, setJwt] = useState<string | null>(null);
+    const [userId, setUserId] = useState<string>("");
 
-    try {
-        jwt = localStorage.getItem("jwt");
-        user = localStorage.getItem("user")
-        if (user) {
-            const userObj = JSON.parse(user)
-            userId = userObj.id
-        }
-    } catch (error) {
-        console.log(error)
-    }
-
+    // localStorage erişimi burada
     useEffect(() => {
-        fetchItems(userId, jwt);
+        try {
+            const storedJwt = localStorage.getItem("jwt");
+            const storedUser = localStorage.getItem("user");
+
+            if (storedJwt) setJwt(storedJwt);
+
+            if (storedUser) {
+                const userObj = JSON.parse(storedUser);
+                setUserId(userObj.id);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+    // Sepet verilerini fetch et
+    useEffect(() => {
+        if (userId && jwt) {
+            fetchItems(userId, jwt);
+        }
     }, [userId, jwt, fetchItems, fetchTrigger]);
 
+    // Siparişleri çek
     const getOrder = async () => {
+        if (!userId || !jwt) return;
         const orderList_ = await getToOrder(userId, jwt);
-        setOrderList(orderList_)
-    }
+        setOrderList(orderList_);
+    };
 
     useEffect(() => {
         if (!jwt) {
@@ -72,7 +82,7 @@ const MyOrdersPage = () => {
         getOrder()
         setLoading(false);
 
-    }, [])
+    }, [jwt])
 
     return (
         loading ?
