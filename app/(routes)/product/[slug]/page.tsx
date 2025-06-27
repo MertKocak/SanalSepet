@@ -6,13 +6,13 @@ import React, { useEffect, useState } from 'react'
 import ProductDetail from '../../_components/Product/ProductDetail';
 import ProductDetailSkeleton from '../../_components/Skeleton/ProductDetailSkeleton';
 
-interface PageProps {
+/* interface ProductDetailPageProps {
   params: {
     slug: string;
   }
-}
+} */
 
-const ProductDetailPage = ({ params }: PageProps) => {
+const ProductDetailPage = ({ params }: { params: { slug: string } }) => {
 
   const [productDetail, setProductDetail] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
