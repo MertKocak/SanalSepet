@@ -14,27 +14,30 @@ import CheckoutForm from '../_components/CheckoutForm';
 import CheckoutCardSkeleton from '../_components/Skeleton/CheckoutCardSkeleton';
 
 const ChechoutPage = () => {
-
     const { items, fetchItems } = useCartStore();
     const [subTotal, setSubTotal] = useState(0);
     const router = useRouter();
     const [loading, setLoading] = useState(true)
+    const [jwt, setJwt] = useState<string | null>(null);
+    const [userId, setUserId] = useState<string>("");
 
-    let jwt: string | null = "";
-    let user: string | null = "";
-    let userId = "";
 
-    try {
-        jwt = localStorage.getItem("jwt");
-        user = localStorage.getItem("user")
-        if (user) {
-            const userObj = JSON.parse(user)
-            userId = userObj.id
+    useEffect(() => {
+        // localStorage sadece burada güvenlidir
+        try {
+            const storedJwt = localStorage.getItem("jwt");
+            const storedUser = localStorage.getItem("user");
+
+            if (storedJwt) setJwt(storedJwt);
+
+            if (storedUser) {
+                const userObj = JSON.parse(storedUser);
+                setUserId(userObj.id);
+            }
+        } catch (error) {
+            console.log("LocalStorage hatası:", error);
         }
-    } catch (error) {
-        console.log(error)
-    }
-
+    }, []);
 
     useEffect(() => {
         if (userId && jwt) {
