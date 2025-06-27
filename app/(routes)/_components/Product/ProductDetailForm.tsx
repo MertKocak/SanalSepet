@@ -71,6 +71,7 @@ const ProductDetailForm = ({ product }: ProductDetailForm) => {
     const onAddCart = async () => {
         if (!userId && !jwt) {
             router.push("/login")
+            return;
         }
 
         if (isThereColor && !selectedColor || isThereSize && !selectedSize) {

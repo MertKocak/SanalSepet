@@ -157,11 +157,16 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
         };
 
         try {
-            const response = await axios.post('http://localhost:3001/api/payment', paymentData, {
-                headers: {
-                    'Content-Type': 'application/json'
+            const response = await axios.post(
+                process.env.SANALPOS as string,
+                paymentData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                 }
-            });
+            );
+
 
             setResponse(response.data);
 

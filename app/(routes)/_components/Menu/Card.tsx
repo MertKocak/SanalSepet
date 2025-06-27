@@ -44,7 +44,7 @@ const Card = ({ jwt, userId }: CardProps) => {
 
     useEffect(() => {
         let total = 0;
-        items.forEach(element => {
+        items?.forEach(element => {
             total = total + element.totalPrice
         });
         setSubTotal(Math.floor(total))
@@ -54,7 +54,7 @@ const Card = ({ jwt, userId }: CardProps) => {
         <Sheet>
             <SheetTrigger>
                 <div className='relative cursor-pointer'>
-                    <span style={{ backgroundColor: "#ff6700" }} className='absolute text-white text-xs font-semibold -right-2.5 -top-2 w-4 h-4 rounded-lg items-center justify-center text-center'>{items.length ? items.length : "0"}</span>
+                    <span style={{ backgroundColor: "#ff6700" }} className='absolute text-white text-xs font-semibold -right-2.5 -top-2 w-4 h-4 rounded-lg items-center justify-center text-center'>{items ? items.length : "0"}</span>
                     <ShoppingBasket className='text-gray-700' />
                 </div>
             </SheetTrigger>
@@ -63,7 +63,7 @@ const Card = ({ jwt, userId }: CardProps) => {
                     <SheetTitle style={{ color: "#ff6700" }} className='font-bold text-lg'>Sepetim</SheetTitle>
                 </SheetHeader>
                 <div className='overflow-y-auto max-h-[58vh]'>
-                    {items.length === 0 ? <p className='px-4 text-md text-gray-700'>Sepetiniz boş!</p>
+                    {!items? <p className='px-4 text-md text-gray-700'>Sepetiniz boş!</p>
                         :
                         <div className='px-4 -mt-2 text-gray-700'>
                             {
@@ -76,7 +76,7 @@ const Card = ({ jwt, userId }: CardProps) => {
                 </div>
                 <SheetClose asChild>
                     <div className='absolute px-4 bottom-0 flex flex-col rounded-2xl border mx-4 mb-4 py-4 items-start'>
-                        {items.length > 0 ?
+                        {items ?
                             <div className=''>
                                 <p className='font-bold text-lg mb-2 text-orange-500'>Sipariş Özeti</p>
                                 <div className=' flex flex-row w-[317px] justify-between'>
@@ -98,7 +98,7 @@ const Card = ({ jwt, userId }: CardProps) => {
                             </div>
                             : null}
                         <div className='w-full'>
-                            {items.length > 0 ? <Button disabled={items.length == 0} onClick={() => router.push(jwt ? "/checkout" : "/login")} style={{ backgroundColor: "#ff6700" }} className='cursor-pointer w-full flex-1'>
+                            {items ? <Button disabled={items.length == 0} onClick={() => router.push(jwt ? "/checkout" : "/login")} style={{ backgroundColor: "#ff6700" }} className='cursor-pointer w-full flex-1'>
                                 Sepeti Onayla
                             </Button> : null}
                         </div>

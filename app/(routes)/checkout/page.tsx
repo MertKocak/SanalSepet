@@ -23,7 +23,6 @@ const ChechoutPage = () => {
 
 
     useEffect(() => {
-        // localStorage sadece burada güvenlidir
         try {
             const storedJwt = localStorage.getItem("jwt");
             const storedUser = localStorage.getItem("user");

@@ -77,7 +77,7 @@ const MyOrdersPage = () => {
 
     useEffect(() => {
         if (!jwt) {
-            router.push("/");
+            /* router.push("/"); */
         }
         getOrder()
         setLoading(false);
