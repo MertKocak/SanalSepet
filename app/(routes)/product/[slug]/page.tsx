@@ -1,12 +1,12 @@
 import ProductDetailClient from "./ProductDetailClient";
 
-type Props = {
+type PageProps = {
   params: {
     slug: string;
   };
 };
 
-const ProductDetailPage = ({ params }: Props) => {
+const ProductDetailPage = ({ params }: PageProps) => {
   return <ProductDetailClient slug={params.slug} />;
 };
 
