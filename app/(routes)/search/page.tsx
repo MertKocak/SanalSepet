@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select"
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, Suspense, useEffect, useState } from "react";
 import ProductItem from "../_components/Product/ProductItem";
 import { Category, Color, Size } from "@/constans/type";
 import { Button } from "@/components/ui/button";
@@ -143,7 +143,6 @@ const SearchPage = () => {
     }
   };
 
-
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       const currentQuery = searchParams.get('q') || '';
@@ -194,86 +193,86 @@ const SearchPage = () => {
     router.push(`/search?${newParams.toString()}`);
   };
 
-
   return (
-    <div className='mt-8 px-20 xl:px-40 justify-center mb-8'>
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-4 mb-8 '>
-        <Input value={search} className='w-full' placeholder='Ara...' onChange={handleSearchChange} />
-        <Select value={color} onValueChange={handleColorChange}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Tüm Renkler" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Tüm Renkler</SelectItem>
-            {colors.map((color) => (
-              <SelectItem key={color.id} value={color.name}> {color.name} </ SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={size} onValueChange={handleSizeChange}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Tüm Bedenler" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Tüm Bedenler</SelectItem>
-            {sizes.map((size) => (
-              <SelectItem key={size.id} value={size.name}> {size.name} </ SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={category} onValueChange={handleCategoryChange}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Tüm Kategoriler" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Tüm Kategoriler</SelectItem>
-            {categories.map((category) => (
-              <SelectItem key={category.id} value={category.slug}> {category.name} </ SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Button onClick={handleSearchDelete} className='bg-gray-700 text-white cursor-pointer'>
-          <div className="flex flex-row justify-center items-center">
-            <XIcon className="h-8 mr-2" />
-            <p>Aramayı Temizle</p>
-          </div>
-        </Button>
-      </div>
-      <div>
-        {loading ?
-          (
-            <SearchSkeleton />
-          )
-          :
-          (
-            <div>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-                {products.map((product, index) => (
-                  <ProductItem
-                    key={index}
-                    product={product}
-                  />
-                ))}
-              </div>
-              <div className="flex justify-center items-center mt-8">
-                <Pagination>
-                  <PaginationContent>
-                    {[...Array(totalPage)].map((_, i) => (
-                      <PaginationItem key={i}>
-                        <PaginationLink
-                          href="#"
-                          onClick={() => handlePageChange(i + 1)}
-                          className={i + 1 === page ? 'border' : ''}>{i + 1}
-                        </PaginationLink>
-                      </PaginationItem>))}
-                  </PaginationContent>
-                </Pagination>
-              </div>
+    <Suspense>
+      <div className='mt-8 px-20 xl:px-40 justify-center mb-8'>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-4 mb-8 '>
+          <Input value={search} className='w-full' placeholder='Ara...' onChange={handleSearchChange} />
+          <Select value={color} onValueChange={handleColorChange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Tüm Renkler" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tüm Renkler</SelectItem>
+              {colors.map((color) => (
+                <SelectItem key={color.id} value={color.name}> {color.name} </ SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={size} onValueChange={handleSizeChange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Tüm Bedenler" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tüm Bedenler</SelectItem>
+              {sizes.map((size) => (
+                <SelectItem key={size.id} value={size.name}> {size.name} </ SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={category} onValueChange={handleCategoryChange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Tüm Kategoriler" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tüm Kategoriler</SelectItem>
+              {categories.map((category) => (
+                <SelectItem key={category.id} value={category.slug}> {category.name} </ SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Button onClick={handleSearchDelete} className='bg-gray-700 text-white cursor-pointer'>
+            <div className="flex flex-row justify-center items-center">
+              <XIcon className="h-8 mr-2" />
+              <p>Aramayı Temizle</p>
             </div>
-          )}
-      </div>
-
-    </div >
+          </Button>
+        </div>
+        <div>
+          {loading ?
+            (
+              <SearchSkeleton />
+            )
+            :
+            (
+              <div>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                  {products.map((product, index) => (
+                    <ProductItem
+                      key={index}
+                      product={product}
+                    />
+                  ))}
+                </div>
+                <div className="flex justify-center items-center mt-8">
+                  <Pagination>
+                    <PaginationContent>
+                      {[...Array(totalPage)].map((_, i) => (
+                        <PaginationItem key={i}>
+                          <PaginationLink
+                            href="#"
+                            onClick={() => handlePageChange(i + 1)}
+                            className={i + 1 === page ? 'border' : ''}>{i + 1}
+                          </PaginationLink>
+                        </PaginationItem>))}
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+              </div>
+            )}
+        </div>
+      </div >
+    </Suspense>
   )
 }
 export default SearchPage
