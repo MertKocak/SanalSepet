@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { Product } from '@/constans/type';
 import ProductDetail from '../../_components/Product/ProductDetail';
 import ProductDetailSkeleton from '../../_components/Skeleton/ProductDetailSkeleton';

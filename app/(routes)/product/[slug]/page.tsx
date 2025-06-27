@@ -1,18 +1,14 @@
 import { getProducts } from '@/actions/getProducts';
-import ProductDetailClient from './ProductDetailClient'; // client component
+import ProductDetailClient from './ProductDetailClient';
 
-interface ProductDetailPageProps {
-  params: {
-    slug: string;
-  };
+
+export default async function ProductDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params;
+  const products = await getProducts(`/products?filters[slug][$eq]=${slug}&populate=*`);
+
+  return <ProductDetailClient products={products} />;
 }
-
-const ProductDetailPage = async ({ params }: ProductDetailPageProps) => {
-  const products = await getProducts(`/products?filters[slug][$eq]=${params.slug}&populate=*`);
-
-  return (
-    <ProductDetailClient products={products} />
-  );
-};
-
-export default ProductDetailPage;
