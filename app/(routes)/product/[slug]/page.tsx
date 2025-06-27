@@ -1,7 +1,5 @@
-// page.tsx
 import { getProducts } from '@/actions/getProducts';
-import ProductDetail from '../../_components/Product/ProductDetail';
-/* import ProductDetailSkeleton from '../../_components/Skeleton/ProductDetailSkeleton'; */
+import ProductDetailClient from './ProductDetailClient'; // client component
 
 interface ProductDetailPageProps {
   params: {
@@ -10,19 +8,10 @@ interface ProductDetailPageProps {
 }
 
 const ProductDetailPage = async ({ params }: ProductDetailPageProps) => {
-  // Direkt sunucu tarafında fetch et
   const products = await getProducts(`/products?filters[slug][$eq]=${params.slug}&populate=*`);
 
-  if (!products || products.length === 0) {
-    return <div>Ürün bulunamadı</div>;
-  }
-
   return (
-    <div className="px-20 xl:px-48">
-      {products.map((product, index) => (
-        <ProductDetail key={index} product={product} />
-      ))}
-    </div>
+    <ProductDetailClient products={products} />
   );
 };
 
