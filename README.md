@@ -1,6 +1,6 @@
 # 🛒 SanalSepet
 
-Proje Demosu: https://sanal-sepet.vercel.app/
+Canlı Demo: https://sanal-sepet.vercel.app/
 
 **SanalSepet**, modern web teknolojileri kullanılarak geliştirilen bir e-ticaret platformudur. Kullanıcı dostu arayüzü, hızlı performansı ve güvenli ödeme altyapısıyla sade ve etkili bir alışveriş deneyimi sunar.
 
