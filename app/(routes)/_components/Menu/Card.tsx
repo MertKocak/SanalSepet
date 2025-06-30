@@ -58,7 +58,7 @@ const Card = ({ jwt, userId }: CardProps) => {
                     <ShoppingBasket className='text-gray-700' />
                 </div>
             </SheetTrigger>
-            <SheetContent className='text-gray-700 h-screen justify-between sm:max-w-sm w-screen'>
+            <SheetContent className='text-gray-700 justify-between sm:max-w-sm w-screen'>
                 <div>
                     <SheetHeader>
                         <SheetTitle style={{ color: "#ff6700" }} className='font-bold text-lg'>Sepetim</SheetTitle>

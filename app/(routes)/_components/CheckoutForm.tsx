@@ -93,6 +93,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
     });
 
     const onSubmit = async (data: any) => {
+
         const paymentCard = {
             cardHolderName: data.kartSahibi,
             cardNumber: data.kartNumarasi,
@@ -156,6 +157,8 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
             basketItems: basketItems
         };
 
+        setLoading(true);
+        const toastId = toast.loading("Ödeme alınıyor...");
         try {
             const response = await axios.post(
                 "https://sanalpos.onrender.com/api/payment",
@@ -199,8 +202,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
                     })
                 })
 
-                setLoading(true);
-
+                toast.dismiss(toastId);
                 toast.success("Ödeme başarılı bir şekilde tamamlandı!");
 
                 fetchItems(userId, jwt)
@@ -208,12 +210,15 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
                 router.push("/my-orders")
             }
             else {
-                toast.error("Ödeme tamamlanamadı!")
+                toast.dismiss(toastId);
+                toast.error("Ödeme tamamlanamadı!");
 
             }
         } catch (error) {
-            toast.error("Ödeme tamamlanamadı!")
-            console.error('Error:', error);
+            toast.dismiss(toastId);
+            toast.error("Ödeme sırasında bir hata oluştu!");
+        } finally {
+            setLoading(false);
         }
     }
 
