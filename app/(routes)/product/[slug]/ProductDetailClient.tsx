@@ -14,7 +14,7 @@ const ProductDetailClient = ({ products }: ProductDetailClientProps) => {
   }
 
   return (
-    <div className="px-20 xl:px-48">
+    <div className="px-4 md:px-20 xl:px-48">
       {products.map((product, index) => (
         <ProductDetail key={index} product={product} />
       ))}

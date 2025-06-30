@@ -194,7 +194,7 @@ const SearchPageClient = () => {
 
     return (
 
-        <div className='mt-8 px-20 xl:px-40 justify-center mb-8'>
+        <div className='mt-8 px-4 md:px-20 xl:px-40 justify-center mb-8'>
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-4 mb-8 '>
                 <Input value={search} className='w-full' placeholder='Ara...' onChange={handleSearchChange} />
                 <Select value={color} onValueChange={handleColorChange}>
@@ -245,7 +245,7 @@ const SearchPageClient = () => {
                     :
                     (
                         <div>
-                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                            <div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-6'>
                                 {products.map((product, index) => (
                                     <ProductItem
                                         key={index}

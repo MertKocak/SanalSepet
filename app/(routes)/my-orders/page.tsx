@@ -88,7 +88,7 @@ const MyOrdersPage = () => {
         loading ?
             <MyOrdersPageSkeleton /> :
             <div className='px-4 md:px-20 xl:px-48 my-6'>
-                <p style={{ color: "#ff6700" }} className='text-lg font-semibold'>
+                <p style={{ color: "#ff6700" }} className='text-lg md:mt-0 -mt-8 font-semibold'>
                     <span>Siparişlerim</span>
                     <hr className='mt-2 mb-4' />
                 </p>

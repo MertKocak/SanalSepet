@@ -14,6 +14,7 @@ import {
 import { UserCircle2 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const UserMenu = () => {
 
@@ -32,13 +33,22 @@ const UserMenu = () => {
     }, []);
 
     const signOut = () => {
-        if (typeof window != "undefined") {
-            localStorage.removeItem("jwt");
-            localStorage.removeItem("user");
-            setJwt("");
-            router.push("/login")
+        if (typeof window !== "undefined") {
+            const toastId = toast.loading("Çıkış yapılıyor lütfen bekleyin...");
+
+            setTimeout(() => {
+                localStorage.removeItem("jwt");
+                localStorage.removeItem("user");
+                setJwt("");
+
+                toast.success("Başarıyla çıkış yapıldı!", {
+                    id: toastId,
+                });
+
+                router.push("/login");
+            }, 1000);
         }
-    }
+    };
 
     return (
         <>

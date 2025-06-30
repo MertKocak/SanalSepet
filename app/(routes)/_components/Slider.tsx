@@ -37,7 +37,7 @@ const Slider = () => {
 
     return (
         <div>
-            {loading ? <div className='px-20 xl:px-40'>
+            {loading ? <div className='px-4 xl:px-40'>
                 <Skeleton className=' bg-gray-100 w-full rounded-2xl h-[200px] lg:h-[360px] justify-center place-self-center' />
             </div> :
                 <Carousel
@@ -55,7 +55,7 @@ const Slider = () => {
                 >
                     <CarouselContent>
                         {sliders.map((slider) => (
-                            <CarouselItem className='xl:px-44 px-20 mt-0' key={slider.url}>
+                            <CarouselItem className='xl:px-44 md:px-20 px-4 mt-0' key={slider.url}>
                                 <Link href={"/"}>
                                     <Image
                                         alt='slider'
@@ -71,8 +71,8 @@ const Slider = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className='xl:left-44 left-20' />
-                    <CarouselNext className='xl:right-48 right-24' />
+                    <CarouselPrevious className='xl:left-44 md:left-20 left-4' />
+                    <CarouselNext className='xl:right-48 md:right-24 right-4' />
                 </Carousel>}
 
         </div>

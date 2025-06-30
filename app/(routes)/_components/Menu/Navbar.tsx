@@ -53,7 +53,7 @@ const Navbar = () => {
     return (
         <>
             <header style={{ backgroundColor: "#fffeff" }} className='fixed top-0 left-0 w-full z-50 flex py-4 border-b text-gray-700 shadow-xs'>
-                <div className='flex items-center container justify-between mx-auto px-20 xl:px-40'>
+                <div className='flex items-center container justify-between mx-auto px-4 md:px-20 xl:px-40'>
                     <Logo />
                     <Search />
                     <div className='flex items-center space-x-4'>

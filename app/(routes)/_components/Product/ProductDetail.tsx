@@ -13,11 +13,11 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
     return (
         <>
-    <div className='w-full flex lg:flex-row flex-col  pt-4 md:pt-8 md:pb-12 pb-24'>
+    <div className='w-full flex lg:flex-row flex-col pt-4 md:pt-8 pb-12'>
                 <div>
                     <ProductModalImages images={product.images} />
                 </div>
-                <div className='mx-6 flex flex-col justify-between'>
+                <div className='mx-0 md:mx-6 flex flex-col justify-between'>
                     <div>
                         <p style={{ color: "#ff6700" }} className='text-xl md:text-2xl mt-4 lg:mt-0 font-bold'>{product.name}</p>
                         <p className='text-md md:text-[16px] font-semibold rounded-lg text-gray-700 mt-1'>{product.category.name}</p>

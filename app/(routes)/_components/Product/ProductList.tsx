@@ -28,10 +28,10 @@ const ProductList = () => {
 
     return (
         <>
-            <p className='font-semibold text-lg text-gray-700 mt-12 px-20 xl:px-40'>İndirimde Olan Ürünler</p>
+            <p className='font-semibold text-lg text-gray-700 mt-12 px-4 md:px-20 xl:px-40'>İndirimde Olan Ürünler</p>
             {loading ? <ProductSkeleton />
                 :
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 mb-12 px-20 xl:px-40'>
+                <div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-6 mt-4 mb-12 px-4 md:px-20 xl:px-40'>
                     {products.map((product, index) => (
                         <ProductItem
                             key={index}

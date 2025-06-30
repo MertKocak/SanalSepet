@@ -81,10 +81,10 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            isim: "mert kocak",
-            telefon: "5060532870",
-            adres: "sivas merkez",
-            kartSahibi: "mert kocak",
+            isim: "",
+            telefon: "",
+            adres: "",
+            kartSahibi: "",
             kartNumarasi: "5890040000000016",
             ay: "04",
             yil: "29",

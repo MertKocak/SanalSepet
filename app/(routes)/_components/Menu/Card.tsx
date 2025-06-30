@@ -58,40 +58,42 @@ const Card = ({ jwt, userId }: CardProps) => {
                     <ShoppingBasket className='text-gray-700' />
                 </div>
             </SheetTrigger>
-            <SheetContent className='text-gray-700'>
-                <SheetHeader>
-                    <SheetTitle style={{ color: "#ff6700" }} className='font-bold text-lg'>Sepetim</SheetTitle>
-                </SheetHeader>
-                <div className='overflow-y-auto max-h-[58vh]'>
-                    {!items? <p className='px-4 text-md text-gray-700'>Sepetiniz boş!</p>
-                        :
-                        <div className='px-4 -mt-2 text-gray-700'>
-                            {
-                                items.map((item) => (
-                                    <CardItem key={item.id} item={item} deleteCardItem={() => deleteCardItem(item.id)} />
-                                ))
-                            }
-                        </div>
-                    }
+            <SheetContent className='text-gray-700 h-screen justify-between sm:max-w-sm w-screen'>
+                <div>
+                    <SheetHeader>
+                        <SheetTitle style={{ color: "#ff6700" }} className='font-bold text-lg'>Sepetim</SheetTitle>
+                    </SheetHeader>
+                    <div className='overflow-y-auto max-h-[58vh]'>
+                        {!items ? <p className='px-4 text-md text-gray-700'>Sepetiniz boş!</p>
+                            :
+                            <div className='px-4 -mt-2 text-gray-700'>
+                                {
+                                    items.map((item) => (
+                                        <CardItem key={item.id} item={item} deleteCardItem={() => deleteCardItem(item.id)} />
+                                    ))
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
                 <SheetClose asChild>
-                    <div className='absolute px-4 bottom-0 flex flex-col rounded-2xl border mx-4 mb-4 py-4 items-start'>
+                    <div className='flex px-4 flex-col rounded-2xl border mx-4 mb-4 py-4 items-start'>
                         {items ?
-                            <div className=''>
+                            <div className='w-full'>
                                 <p className='font-bold text-lg mb-2 text-orange-500'>Sipariş Özeti</p>
-                                <div className=' flex flex-row w-[317px] justify-between'>
+                                <div className=' flex flex-row justify-between'>
                                     <p className='font-normal text-sm text-gray-700'>Ürün Toplamı</p>
                                     <p className='font-normal text-sm text-gray-700'>{subTotal}₺</p>
                                 </div>
-                                <div className='flex flex-row w-[317px] justify-between'>
+                                <div className='flex flex-row justify-between'>
                                     <p className='font-normal text-sm text-gray-700'>Kargo Ücreti</p>
                                     <p className='font-normal text-sm text-gray-700 text-right'>50₺</p>
                                 </div>
-                                <div className='flex flex-row w-[317px] justify-between'>
+                                <div className='flex flex-row justify-between'>
                                     <p className='font-normal text-sm text-gray-700'>250₺ ve Üzeri Kargo Bedava!</p>
                                     <p className='font-normal text-sm text-orange-500 text-right'>-50₺</p>
                                 </div>
-                                <div className='flex flex-row w-[317px] justify-between'>
+                                <div className='flex flex-row justify-between'>
                                     <p className='font-semibold text-lg mt-2 mb-2 text-gray-700'>Toplam</p>
                                     <p className='font-semibold text-lg mt-2 mb-2 text-gray-700'>{subTotal}₺</p>
                                 </div>

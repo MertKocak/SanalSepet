@@ -77,7 +77,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <div style={{ borderColor: "#D6D6D6" }} className='mt-4 border p-6 rounded-2xl w-1/5'>
+        <div className='mt-4 border p-6 rounded-xl'>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField

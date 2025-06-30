@@ -33,7 +33,7 @@ const RecentProducts = () => {
     return (
         <>
             <p className='font-semibold text-lg text-gray-700 mt-6'>Popüler Ürünler</p>
-            <div className='mt-4 mb-24'>
+            <div className='mt-4 mb-24 md:px-0 px-12'>
                 <Carousel
                     opts={
                         {
@@ -49,7 +49,7 @@ const RecentProducts = () => {
                 >
                     <CarouselContent>
                         {products.map((product, index) => (
-                            <CarouselItem className='basis-1/1 md:basis-1/2 lg:basis-1/3 xl:basis-1/4' key={index}>
+                            <CarouselItem className='basis-1/1 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4' key={index}>
                                 <ProductItem
                                     key={index}
                                     product={product}

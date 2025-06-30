@@ -39,6 +39,13 @@ const ChechoutPage = () => {
     }, []);
 
     useEffect(() => {
+        if (items.length === 0 && !loading) {
+            router.push("/");
+        }
+    }, [items, loading]);
+
+
+    useEffect(() => {
         if (userId && jwt) {
             fetchItems(userId, jwt);
         }
@@ -63,7 +70,7 @@ const ChechoutPage = () => {
     }
 
     return (
-        <div className='px-16 xl:px-40 my-8'>
+        <div className='px-4 md:px-16 xl:px-40 my-2 md:my-8'>
             <div className='grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-3 gap-4'>
                 <div className='col-span-1 md:col-span-2 xl:col-span-2 border rounded-2xl py-1.5 px-3 h-fit' >
                     <CheckoutForm subtotal={subTotal} userId={userId} jwt={jwt} />
