@@ -1,6 +1,6 @@
 # 🛒 SanalSepet
 
-https://sanal-sepet.vercel.app/
+Proje Demosu: https://sanal-sepet.vercel.app/
 
 **SanalSepet**, modern web teknolojileri kullanılarak geliştirilen bir e-ticaret platformudur. Kullanıcı dostu arayüzü, hızlı performansı ve güvenli ödeme altyapısıyla sade ve etkili bir alışveriş deneyimi sunar.
 
@@ -28,9 +28,9 @@ https://sanal-sepet.vercel.app/
 ## 🧠 Geliştirici Notları
 
 Bu proje, modern frontend ve backend teknolojileriyle e-ticaret süreçlerini öğrenmek ve göstermek amacıyla geliştirildi. Özellikle:
--Headless CMS ile içerik yönetimi (Strapi)
--Global state yönetimi (Zustand)
--Gerçek ödeme altyapısı entegrasyonu (Iyzico & Node.js)
+- Headless CMS ile içerik yönetimi (Strapi)
+- Global state yönetimi (Zustand)
+- Gerçek ödeme altyapısı entegrasyonu (Iyzico & Node.js)
 konularında deneyim kazanmak hedeflendi.
 
 ## 📬 İletişim
