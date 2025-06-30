@@ -14,6 +14,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
+export const revalidate = 60;
 
 const Slider = () => {
 

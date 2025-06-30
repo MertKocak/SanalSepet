@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { Category } from '@/constans/type';
 import NavSkeleton from '../Skeleton/NavSkeleton';
 import MobileMenu from './MobileMenu';
+export const revalidate = 60;
 
 const Navbar = () => {
     const [categories, setCategories] = useState<Category[]>([]);

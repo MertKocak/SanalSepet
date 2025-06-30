@@ -5,6 +5,7 @@ import { Product } from '@/constans/type';
 import React, { useState, useEffect } from 'react'
 import ProductItem from './ProductItem';
 import ProductSkeleton from '../Skeleton/ProductSkeleton';
+export const revalidate = 60;
 
 const ProductList = () => {
 
