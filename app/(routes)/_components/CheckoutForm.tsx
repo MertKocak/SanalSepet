@@ -158,7 +158,7 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
 
         try {
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_PAYMENT_API_URL}/api/payment`,
+                "https://sanalpos.onrender.com/api/payment",
                 paymentData,
                 {
                     headers: {
