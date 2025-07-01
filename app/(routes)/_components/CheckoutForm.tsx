@@ -197,17 +197,16 @@ const CheckoutForm = ({ subtotal, userId, jwt }: ChechoutPageProps) => {
 
                 await createOrder(payload, jwt)
 
-                items.forEach((item, index) => {
-                    deleteCart(item.id, jwt).then(resp => {
-                    })
-                })
+                await Promise.all(
+                    items.map((item) => deleteCart(item.id, jwt))
+                );
+
+                await fetchItems(userId, jwt);
 
                 toast.dismiss(toastId);
                 toast.success("Ödeme başarılı bir şekilde tamamlandı!");
 
-                fetchItems(userId, jwt)
-
-                router.push("/my-orders")
+                await router.push("/my-orders")
             }
             else {
                 toast.dismiss(toastId);

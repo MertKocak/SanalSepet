@@ -69,8 +69,8 @@ const ProductForm = ({ product }: ProductForm) => {
 
     const onAddCart = async () => {
         if(!userId){
-            router.push("/login")
-            toast.error('Sepete ürün eklemek için lütfen önce giriş yapınız.')
+            await router.push("/login")
+            await toast.error('Sepete ürün eklemek için lütfen önce giriş yapınız.')
             return;
         }
 
