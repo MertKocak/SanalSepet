@@ -1,19 +1,19 @@
-# 🛒 SanalSepet
+# SanalSepet
 
 Canlı Demo: https://sanal-sepet.vercel.app/
 
 **SanalSepet**, modern web teknolojileri kullanılarak geliştirilen bir e-ticaret platformudur. Kullanıcı dostu arayüzü, hızlı performansı ve güvenli ödeme altyapısıyla sade ve etkili bir alışveriş deneyimi sunar.
 
-## 🚀 Özellikler
+## Özellikler
 
-- 🧾 Ürün listeleme ve detay sayfaları  
-- 🛒 Sepete ürün ekleme ve çıkarma  
-- 📦 Sipariş oluşturma ve listeleme  
-- 🧍 Kullanıcı bazlı ürün geçmişi  
-- 💳 Iyzico ile güvenli ödeme entegrasyonu  
-- 📱 Mobil uyumlu tasarım
+- Ürün listeleme ve detay sayfaları  
+- Sepete ürün ekleme ve çıkarma  
+- Sipariş oluşturma ve listeleme  
+- Kullanıcı bazlı ürün geçmişi  
+- Iyzico ile güvenli ödeme entegrasyonu  
+- Mobil uyumlu tasarım
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 | Teknoloji     | Açıklama                                                 |
 |---------------|-----------------------------------------------------------|
@@ -25,7 +25,7 @@ Canlı Demo: https://sanal-sepet.vercel.app/
 | **Node.js**   | Iyzico ödeme sistemini backend üzerinden yönlendirmek için kullanıldı |
 | **Iyzico**    | Gerçek zamanlı ve güvenli ödeme altyapısı sağlayıcısı    |
 
-## 🧠 Geliştirici Notları
+## Geliştirici Notları
 
 Bu proje, modern frontend ve backend teknolojileriyle e-ticaret süreçlerini öğrenmek ve göstermek amacıyla geliştirildi. Özellikle:
 - Headless CMS ile içerik yönetimi (Strapi)
@@ -33,9 +33,8 @@ Bu proje, modern frontend ve backend teknolojileriyle e-ticaret süreçlerini ö
 - Gerçek ödeme altyapısı entegrasyonu (Iyzico & Node.js)
 konularında deneyim kazanmak hedeflendi.
 
-## 📬 İletişim
+## İletişim
 Her türlü geri bildirim ve iş birliği için:
 
-📧 mertkocak.2811@gmail.com
-🔗 [LinkedIn](https://www.linkedin.com/in/mmertkocak/)
+mertkocak.2811@gmail.com [LinkedIn](https://www.linkedin.com/in/mmertkocak/)
 
