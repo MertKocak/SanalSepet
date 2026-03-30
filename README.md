@@ -36,5 +36,6 @@ konularında deneyim kazanmak hedeflendi.
 ## İletişim
 Her türlü geri bildirim ve iş birliği için:
 
-mertkocak.2811@gmail.com [LinkedIn](https://www.linkedin.com/in/mmertkocak/)
+mertkocak.2811@gmail.com
+ [LinkedIn](https://www.linkedin.com/in/mmertkocak/)
 
